@@ -22,7 +22,12 @@ classifiers = [
   "Programming Language :: Python :: Implementation :: CPython",
   "Programming Language :: Python :: Implementation :: PyPy",
 ]
-dependencies = []
+dependencies = [
+  "beartype",
+  "requests",
+  "json",
+  "pandas",
+]
 
 [project.urls]
 Documentation = "https://github.com/strong-force-projects/avalanche-gpt#readme"
