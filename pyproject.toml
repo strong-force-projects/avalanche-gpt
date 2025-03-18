@@ -30,25 +30,25 @@ Issues = "https://github.com/strong-force-projects/avalanche-gpt/issues"
 Source = "https://github.com/strong-force-projects/avalanche-gpt"
 
 [tool.hatch.version]
-path = "src/avalanche-gpt/__about__.py"
+path = "src/avalanche_gpt/__about__.py"
 
 [tool.hatch.envs.types]
 extra-dependencies = [
   "mypy>=1.0.0",
 ]
 [tool.hatch.envs.types.scripts]
-check = "mypy --install-types --non-interactive {args:src/avalanche-gpt tests}"
+check = "mypy --install-types --non-interactive {args:src/avalanche_gpt tests}"
 
 [tool.coverage.run]
 source_pkgs = ["avalanche-gpt", "tests"]
 branch = true
 parallel = true
 omit = [
-  "src/avalanche-gpt/__about__.py",
+  "src/avalanche_gpt/__about__.py",
 ]
 
 [tool.coverage.paths]
-avalanche-gpt = ["src/avalanche-gpt", "*/avalanche-gpt/src/avalanche-gpt"]
+avalanche-gpt = ["src/avalanche_gpt", "*/avalanche-gpt/src/avalanche_gpt"]
 tests = ["tests", "*/avalanche-gpt/tests"]
 
 [tool.coverage.report]
