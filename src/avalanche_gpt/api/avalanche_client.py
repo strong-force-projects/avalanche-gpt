@@ -26,9 +26,7 @@ class AvalancheClient:
         self.date = date
         self.region = region
         self.lang = lang
-        self.base_url = (
-            f"https://static.avalanche.report/bulletins/{date}/{date}_{region}_{lang}_CAAMLv6.json"
-        )
+        self.base_url = f"https://static.avalanche.report/bulletins/{date}/{date}_{region}_{lang}_CAAMLv6.json"
 
     def fetch_bulletins(self) -> dict:
         """Fetches avalanche bulletins from the configured API endpoint.

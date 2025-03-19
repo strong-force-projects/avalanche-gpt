@@ -25,7 +25,9 @@ classifiers = [
 dependencies = [
   "beartype",
   "requests",
-  "pandas",
+  "python-dotenv",
+  "openai",
+  "tiktoken" # For token counting, may come in useful
 ]
 
 [project.urls]

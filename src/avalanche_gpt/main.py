@@ -1,5 +1,7 @@
+from typing import Iterator
 from beartype import beartype
 from avalanche_gpt.api.avalanche_client import AvalancheClient
+from avalanche_gpt.response.response_generator import ResponseGenerator
 
 import logging
 
@@ -20,15 +22,32 @@ class Session:
     def __init__(self, date: str, region: str, lang: str):
         self.client = AvalancheClient(date, region, lang)
         self.bulletins = self.client.fetch_bulletins()
+        self.response_generator = ResponseGenerator()
 
     def get_bulletins(self):
         return self.bulletins
 
+    def generate_report(self) -> Iterator[str]:
+        """generate formatted avalanche report"""
+        return self.response_generator.generate_report(self.bulletins)
+
 
 def main():
     session = Session("2025-03-01", "EUREGIO", "en")
-    bulletins = session.get_bulletins()
-    print(bulletins)
+
+    # Get raw bulletins and print
+    print("Raw bulletins:")
+    print(session.get_bulletins())
+
+    # Get generated report and print
+    print("\nGenerated report:")
+    try:
+        for chunk in session.generate_report():
+            print(chunk, end="", flush=True)
+    except Exception as e:
+        print(f"\n\nError occurred: {str(e)}")
+
+    print("\n")
 
 
 if __name__ == "__main__":
