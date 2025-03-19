@@ -23,8 +23,6 @@ class ResponseGenerator:
         self.api_key = os.getenv("OPENAI_API_KEY")
         self.client = OpenAI(api_key=self.api_key)
 
-        # print(self.api_key)
-
     def generate_report(self, bulletins: dict) -> Iterator[str]:
         """Generate avalanche report from bulletin data."""
         try:
